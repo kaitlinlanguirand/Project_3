@@ -1,0 +1,4 @@
+column 1: Iteration - number repetitions of in the analysis
+cloumn 2: alpha_morpho - scaling factor controlling morphological change  
+column 3: br_len_lambda - branch length scaling
+column 4: phylogeny - species identifer 
