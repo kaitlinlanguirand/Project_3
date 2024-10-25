@@ -1,0 +1,250 @@
+ ---
+title: "Project Two"
+output:
+  pdf_document: default
+  html_document: default
+---
+
+Due Oct. 25 at 11:59 PM. 
+
+For this first part of the exam, you can either use `surveys_complete.csv` or your own data. If you are using your own data, you must have data in which you think you have a numerical predictor variable and a numerical response variable. If you are using `surveys_complete`, you can use weight and hindfoot_length for this.
+
+Save this file in your `projects` directory. You can either save it in a project two subdirectory, or just put it in projects. Either way is fine.
+
+
+1) Load in your data. Which variable will you be using as a predictor, and which as a response? (5 pts)
+
+```{r}
+# read in data here
+timelines_data <- read_delim("/cloud/project/mosasaur/rjMCMCs/timelines_run_1.log", delim = "\t", col_names = TRUE)
+
+# i might use alpha_morpho as a predictor and fbd_indicator as the response
+```
+
+```
+# Answer which column is predictor and which is response
+```
+
+2) Plot the two against each other with a scatter plot. Do the data appear to be related linearly? (5 pts)
+
+
+```{r}
+# Plot here
+library(ggplot2)
+ggplot(timelines_data, aes(x = Prior, y = Posterior)) +
+  geom_point() +
+  labs(title = "Scatter plot of Prior vs Posterior",
+       x = "Prior",
+       y = "Posterior") +
+  theme_minimal()
+
+```
+
+```
+#Answer here
+thats linear but there is some outliers 
+```
+
+
+3) Fit the linear model. View the summary. (5 pts)
+
+
+```{r}
+# Code here
+model <- lm(Posterior ~ Prior, data = timelines_data)
+summary(model)
+
+```
+
+4) Does the summary make sense when you compare it to the plot you made? Does our model have good predictive power? Evaluate the residual standard error, intercept, and R-Squared in particular. Would you say your predictor predicts the response?  (10 pts)
+
+
+```
+# Answer here
+I think it makes some sense. RSE suggest a good fit when compared to the range of posterior values. the intercept seems a little of to me however. R-squared is .9062 which is super high and suggest 90.62% of the variance in Posterior can be explained by Prior. i thiink overall these numbers suggest there is a high predictive power.
+
+```
+
+
+5) Plot the model on the graph. Increase the size of the text so it is comfortably readable at 5 feet. Make sure axis labels are readable and not overlapping with one another. (5 pts)
+
+```
+# Code here
+ggplot(timelines_data, aes(x = Prior, y = Posterior)) +
+  geom_point(color = "black", alpha = 0.4) +
+  labs(
+    title = "Posterior vs. Prior with Linear Model",
+    x = "Prior", 
+    y = "Posterior"
+  ) +
+  theme_minimal() +
+  theme(
+    plot.title = element_text(size = 24, face = "bold"),  
+    axis.title.x = element_text(size = 20),               
+    axis.title.y = element_text(size = 20),               
+    axis.text.x = element_text(size = 16),                
+    axis.text.y = element_text(size = 16),               
+  )
+```
+
+
+6) Check the normality of the residuals. Do they look OK? Are we violating assumptions? (5 pts)
+
+```{r}
+
+#Code here
+model <- lm(Posterior ~ Prior, data = timelines_data)
+summary(model)
+
+residuals <- model$residuals
+
+graphics.off()
+
+qqnorm(residuals, main = "Q-Q Plot of Residuals")
+qqline(residuals, col = "red", lwd = 2) 
+
+library(ggplot2)
+
+residuals_df <- data.frame(residuals)
+
+ggplot(residuals_df, aes(sample = residuals)) +
+  stat_qq() +
+  stat_qq_line(col = "red") +
+  labs(title = "Q-Q Plot of Residuals", x = "Theoretical Quantiles", y = "Sample Quantiles") +
+  theme_minimal()
+
+```
+
+Why is normality of residuals important? 
+
+```
+it helps ensure reliability of the model. its a way to validate your assumptions for your choosen analysis. it tells you if you need a different model or not. 
+#Answer here
+```
+
+7) If you are using `surveys_complete`: Is there interspecific variation in the linear model? Hint: look at our prior work with facet plots. (15 pts) 
+
+If you are *not* using  `surveys_complete`: Do you think there are groupings within your data that may have a separate linear model? Try grouping the data by that variable and redoing the lm. If this would not make sense for your data, you may also attempt to do multiple predictor variables. (15 pts)
+
+```{r}
+#code here
+# no for the Posterior and Prior the data seems linear and grouped together but i had previously tried alpha_morpho with the indicators and that was not fun 
+
+ggplot(timelines_data, aes(x = alpha_morpho, y = fbd_indicator)) +
+  geom_point() +
+  labs(title = "Scatter plot of FBD Indicator vs Alpha Morphological Parameter",
+       x = "Alpha Morphological Parameter (alpha_morpho)",
+       y = "FBD Indicator") +
+  theme_minimal()
+
+
+#it is linear tho 
+```
+
+## Part Two
+
+In this portion, you are free to use your own data if you have a categorical predictor variable and a response variable. Otherwise, you may use the columns sex and weight in `surveys_complete`
+
+1) First, plot the data grouped by sex (5 pts)
+
+```{r}
+crabs_data <- read_csv("/cloud/project/data/crabs.csv")
+
+ggplot(crabs_data, aes(x = sex, y = carapace_length, color = sex)) +
+  geom_jitter(width = 0.1, alpha = 0.6) +  # Jitter to prevent overplotting
+  labs(title = "Carapace Length by Sex",
+       x = "Sex",
+       y = "Carapace Length") +
+  theme_minimal()
+```
+
+2) Try an ANOVA of this data (5 pt)
+
+```{r}
+# ANOVA code here
+anova_model <- aov(carapace_length ~ sex, data = crabs_data)
+
+leveneTest(carapace_width ~ sex, data = crabs_data)
+```
+
+3) How about a linear model? What information does this give you that an ANOVA can't? (5 pts)
+
+
+```{r}
+#Code here
+linear_model <- lm(carapace_length ~ sex, data = crabs_data) 
+
+summary(linear_model)
+```
+
+```
+#Answer here
+coefficients, R-squared, risidual standard error, f-statistic and p value
+```
+
+3) Plot the lm with the data, with points colored by sex. (10 pts)
+
+
+```{r}
+#Plot code here
+ggplot(crabs_data, aes(x = sex, y = carapace_length, color = sex)) +
+  geom_jitter(width = 0.2, alpha = 0.6) + 
+  geom_smooth(method = "lm", se = FALSE, color = "black") + 
+  labs(title = "Carapace Width by Sex with Linear Model",
+       x = "Sex",
+       y = "Carapace Width") +
+  theme_minimal() +
+  theme(text = element_text(size = 14))
+```
+
+4) Choose any model we've looked at so far, but use two predictor variables. Perform an LM, plot the results, and state if this changes your interpretation of the relationship between variables (10 pts)
+
+```{r}
+# LM Code Here 
+crabs_data$sex <- as.factor(crabs_data$sex)
+linear_model_crabs <- lm( carapace_length + carapace_width ~ sex, data = crabs_data)
+
+
+```
+
+```{r}
+# Plot Code Here 
+ggplot(crabs_data, aes(x = sex, y = carapace_length, color = carapace_width)) +
+  geom_point(alpha = 0.6) +
+  labs(title = "Sex vs. Carapace Length Colored by Carapace Width",
+       x = "Carapace Length",
+       y = "Body Depth") +
+  scale_color_gradient(low = "blue", high = "red") +
+  theme_minimal() +
+  theme(text = element_text(size = 14))
+```
+
+```
+# Text answer here
+no this only goes further to prove the correlation between the variables. 
+```
+
+## Part Three
+
+
+1) Add and commit this document (5 pts)
+
+```
+#Commands here
+git add project_two.rmd
+git commit -m "Added project two"
+
+```
+
+2) Push your changes to github (10 pts)
+
+```
+#Commands here
+git push origin main
+```
+
+
+
+# MS students
+
+My expectation is that you'll do the above with your own data. If any part of this doesn't make sense with your data, please get in touch ASAP so we can pick a different classroom dataset for you.
