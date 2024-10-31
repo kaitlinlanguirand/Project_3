@@ -1,0 +1,15 @@
+Package: LanguirandR
+Title: plots for paper 
+Version: 0.0.0.9000
+Authors@R: 
+    person(given = "Kaitlin", family = "Languirand", email = "kaitlin.languirand@selu.edu", role = c("aut", "cre"))
+Description: What the package does (one paragraph).
+Imports: 
+    dplyr,
+    ggplot2,
+    magrittr,
+    readr
+License: MIT
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.3.2
