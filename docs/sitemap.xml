@@ -2,8 +2,13 @@
 <url><loc>/404.html</loc></url>
 <url><loc>/authors.html</loc></url>
 <url><loc>/index.html</loc></url>
+<url><loc>/reference/bar_plot.html</loc></url>
 <url><loc>/reference/clean_data.html</loc></url>
+<url><loc>/reference/combine_logs.html</loc></url>
 <url><loc>/reference/index.html</loc></url>
 <url><loc>/reference/pipe.html</loc></url>
+<url><loc>/reference/random_color_bar_plot.html</loc></url>
+<url><loc>/reference/rename_variable.html</loc></url>
+<url><loc>/reference/run_anova.html</loc></url>
 </urlset>
 

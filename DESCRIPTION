@@ -1,5 +1,5 @@
 Package: LanguirandR
-Title: plots for paper 
+Title: Project 3 
 Version: 0.0.0.9000
 Authors@R: 
     person(given = "Kaitlin", family = "Languirand", email = "kaitlin.languirand@selu.edu", role = c("aut", "cre"))
@@ -8,8 +8,11 @@ Imports:
     dplyr,
     ggplot2,
     magrittr,
-    readr
+    readr,
+    stringr
 License: MIT
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.3.2
+Depends: 
+    tidyverse
