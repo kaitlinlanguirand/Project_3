@@ -1,0 +1,31 @@
+---
+title:"Project 3"
+output:rmarkdown::html_vignette
+vignettes: >
+  %\VignetteIndexEntry{Project 3}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+## Package Introduction
+
+a few words about it
+
+## Installation Instructions
+```{r setup}
+devtools::install_github()
+library(LanguirandR)
+```
+
+##where do you get the data
++ could use google sheets and give people instructions for that
++can stash data in an r package
+
+
