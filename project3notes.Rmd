@@ -1,0 +1,27 @@
+project three notes 
+
+
+```{r}
+library(usethis)
+#create_package(".") did this 
+```
+
+after new edits
+
+```{r}
+install()
+```
+```{r}
+check()
+```
+```{r}
+document()
+```
+```{r}
+pkgdown::build_site()
+```
+
+
+R mark down practice
+
+

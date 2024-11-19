@@ -1,6 +1,6 @@
 ---
-title:"Project 3"
-output:rmarkdown::html_vignette
+title: "Project 3"
+output: rmarkdown::html_vignette
 vignettes: >
   %\VignetteIndexEntry{Project 3}
   %\VignetteEngine{knitr::rmarkdown}
@@ -20,12 +20,20 @@ a few words about it
 
 ## Installation Instructions
 ```{r setup}
-devtools::install_github()
+devtools::install_github("kaitlinlanguirand/Project_3")
 library(LanguirandR)
+
 ```
 
 ##where do you get the data
 + could use google sheets and give people instructions for that
 +can stash data in an r package
 
+## Using function one
+
+```{r eval=FALSE, fig.width=8, warning=FALSE, include=FALSE}
+
+LanguirandR::bar_plot()
+
+```
 
