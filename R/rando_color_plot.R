@@ -13,7 +13,7 @@ random_color_bar_plot <- function(df, column, title, x_title, y_title) {
   categories <- unique(df[[column]])
   colors <- sample(colors(), length(categories), replace = FALSE)
   color_map <- setNames(colors, categories)
-    ggplot(df, aes(x = factor(df[[column]]), fill = factor(df[[column]]))) +
+    ggplot2::ggplot(df, aes(x = factor(df[[column]]), fill = factor(df[[column]]))) +
     geom_bar(position = "dodge", aes(y = after_stat(count)), color = "black", alpha = 0.8) +
     scale_fill_manual(values = color_map) +
     labs(

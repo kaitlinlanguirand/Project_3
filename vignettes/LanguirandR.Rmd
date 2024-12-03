@@ -14,7 +14,7 @@ knitr::opts_chunk$set(
 )
 ```
 
-## Package Introduction
+## Introduction
 
 a few words about it
 
@@ -26,8 +26,9 @@ library(LanguirandR)
 ```
 
 ##where do you get the data
-+ could use google sheets and give people instructions for that
-+can stash data in an r package
+```{r}
+devtools::install_github("kaitlinlanguirand/Project_3/homework_6/var_files")
+```
 
 ## Using function one
 

@@ -62,13 +62,14 @@ summary(model)
 ```
 # Answer here
 I think it makes some sense. RSE suggest a good fit when compared to the range of posterior values. the intercept seems a little of to me however. R-squared is .9062 which is super high and suggest 90.62% of the variance in Posterior can be explained by Prior. i thiink overall these numbers suggest there is a high predictive power.
+# AMW: the posterior and the prior have to be pretty tightly correlated - one is used to calculate the other. 
 
 ```
 
 
 5) Plot the model on the graph. Increase the size of the text so it is comfortably readable at 5 feet. Make sure axis labels are readable and not overlapping with one another. (5 pts)
 
-```
+```{r}
 # Code here
 ggplot(timelines_data, aes(x = Prior, y = Posterior)) +
   geom_point(color = "black", alpha = 0.4) +
@@ -231,8 +232,9 @@ no this only goes further to prove the correlation between the variables.
 
 ```
 #Commands here
-git add project_two.rmd
-git commit -m "Added project two"
+go to git tab
+click on commit botton 
+commit "finished project two"
 
 ```
 
@@ -240,10 +242,9 @@ git commit -m "Added project two"
 
 ```
 #Commands here
-git push origin main
+push after commit
+check github 
 ```
-
-
 
 # MS students
 

@@ -9,6 +9,6 @@
 #' @export
 rename_variable <- function(df, column, old_name, new_name) {
   df <- df %>%
-    mutate(across('column', str_replace, 'old_name', 'new_name'))
+    dplyr::mutate(across('column', str_replace, 'old_name', 'new_name'))
   return(df)
 }

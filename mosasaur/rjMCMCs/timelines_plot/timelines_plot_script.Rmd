@@ -1,0 +1,98 @@
+
+
+```{r}
+library(tidyverse)
+library(ggplot2)
+```
+
+
+```{r}
+tl_log1 <- read_delim(file = "/cloud/project/mosasaur/rjMCMCs/timelines_run_1.log")
+tl_log2 <- read_delim(file = "/cloud/project/mosasaur/rjMCMCs/timelines_run_2.log")
+```
+
+
+```{r}
+combined_tl_logs <- bind_rows(
+  tl_log1 %>% mutate(source = "tl_log1"),
+  tl_log2 %>% mutate(source = "tl_log2")
+  )
+```
+
+```{r}
+combined_tl_logs <- combined_tl_logs %>%
+  mutate(across('character_indicator', str_replace, '1', 'Unpartitioned'))
+combined_tl_logs <- combined_tl_logs %>%
+  mutate(across('character_indicator', str_replace, '2', 'Core'))
+combined_tl_logs <- combined_tl_logs %>%
+  mutate(across('character_indicator', str_replace, '3', 'Cranium'))
+combined_tl_logs <- combined_tl_logs %>%
+  mutate(across('character_indicator', str_replace, '4', 'Limb'))
+combined_tl_logs <- combined_tl_logs %>%
+  mutate(across('character_indicator', str_replace, '5', 'Tooth'))
+combined_tl_logs <- combined_tl_logs %>%
+  mutate(across('character_indicator', str_replace, '6', 'All Partition'))
+combined_tl_logs <-  combined_tl_logs %>%
+  mutate(across('character_indicator', str_replace, '7', 'Clusters'))
+
+```
+
+
+
+```{r}
+plot_fbd <- ggplot(combined_tl_logs, aes(x = factor(fbd_indicator), fill = factor(fbd_indicator))) +
+  geom_bar(position = "dodge", aes(y = after_stat(count)), color = "black", alpha = 0.8) +  # Bar for counts by fbd_indicator
+  labs(
+    title = "Posterior Support by FBD Indicator",
+    x = "FBD Indicator",
+    y = "Frequency",
+    fill = "FBD Indicator"
+  ) +
+  scale_fill_grey(start = 0.2, end = 0.8) + 
+  theme(
+    plot.background = element_rect(fill = "white", color = NA), 
+    panel.background = element_rect(fill = "white", color = NA), 
+    plot.title = element_text(hjust = 0.5, size = 16),
+    axis.title.x = element_text(size = 14),
+    axis.title.y = element_text(size = 14),
+    legend.position = "none",  
+    axis.text.x = element_text(angle = 45, hjust = 1)  
+  )
+
+
+```
+
+
+
+```{r}
+ggsave("fbd_indicator_plot.png", plot = plot_fbd, width = 10, height = 6, dpi = 300, bg = "white")
+```
+
+
+```{r}
+
+plot_character <- ggplot(combined_tl_logs, aes(x = factor(character_indicator), fill = factor(character_indicator))) +
+  geom_bar(position = "dodge", aes(y = after_stat(count)), color = "black", alpha = 0.8) + 
+  labs(
+    title = "Posterior Support by Character Indicator",
+    x = "Character Indicator",
+    y = "Frequency",
+    fill = "Character Indicator"
+  )  +  
+  scale_fill_grey(start = 0.2, end = 0.8) + 
+  theme_minimal(base_size = 14) +
+  theme(
+    plot.background = element_rect(fill = "white", color = NA), 
+    panel.background = element_rect(fill = "white", color = NA),  
+    plot.title = element_text(hjust = 0.5, size = 16),
+    axis.title.x = element_text(size = 14),
+    axis.title.y = element_text(size = 14),
+    legend.position = "none",  
+    axis.text.x = element_text(angle = 45, hjust = 1)  
+  )
+
+```
+
+```{r}
+ggsave("character_indicator_plot.png", plot = plot_character, width = 10, height = 6, dpi = 300, bg = "white")
+```

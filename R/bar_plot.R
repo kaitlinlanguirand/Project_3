@@ -8,11 +8,11 @@
 #'
 #' @return A bar graph displaying the frequency of column selected
 #' @export
-bar_plot <- function(df, column, title, x_title, y_title) {
-  ggplot(df, aes(x = factor(column), fill = factor(column))) +
+bar_plot <- function(df, column, plot_title, x_title, y_title) {
+  ggplot2::ggplot(df, aes(x = factor(column), fill = factor(column))) +
     geom_bar(position = "dodge", aes(y = after_stat(count)), color = "black", alpha = 0.8) +
     labs(
-      title = title,
+      title = plot_title,
       x = x_title,
       y = y_title,
       fill = x_title
