@@ -9,18 +9,21 @@
 #'
 #' @return A bar graph displaying the frequency of the selected column with random colors.
 #' @export
-random_color_bar_plot <- function(df, column, title, x_title, y_title) {
-  categories <- unique(df[[column]])
-  colors <- sample(colors(), length(categories), replace = FALSE)
-  color_map <- setNames(colors, categories)
-    ggplot2::ggplot(df, aes(x = factor(df[[column]]), fill = factor(df[[column]]))) +
-    geom_bar(position = "dodge", aes(y = after_stat(count)), color = "black", alpha = 0.8) +
-    scale_fill_manual(values = color_map) +
+crazy_histogram <- function(df, column, title, x_title, y_title) {
+  num_colors <- 50
+  colors <- sample(colors(), num_colors, replace = TRUE)
+  plot <- ggplot2::ggplot(df, aes(x = df[[column]])) +
+    geom_histogram(
+      aes(y = ..density..),
+      fill = sample(colors(), 1),
+      color = "black",
+      alpha = 0.8
+    ) +
+    geom_density(color = "red", size = 1, alpha = 0.7) +
     labs(
       title = title,
       x = x_title,
-      y = y_title,
-      fill = x_title
+      y = y_title
     ) +
     theme_minimal(base_size = 14) +
     theme(
@@ -29,7 +32,10 @@ random_color_bar_plot <- function(df, column, title, x_title, y_title) {
       plot.title = element_text(hjust = 0.5, size = 16),
       axis.title.x = element_text(size = 14),
       axis.title.y = element_text(size = 14),
-      legend.position = "none",
-      axis.text.x = element_text(angle = 45, hjust = 1)
+      axis.text.x = element_text(size = 12, angle = 45, hjust = 1)
     )
+  message("\U0001F631 Crazy histogram alert! Colors are out of control!")
+  return(plot)
 }
+
+

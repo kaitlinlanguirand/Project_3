@@ -4,16 +4,16 @@
 \alias{rename_variable}
 \title{Rename variable in column}
 \usage{
-rename_variable(df, column, old_name, new_name)
+rename_variable(df, old_name, new_name)
 }
 \arguments{
 \item{df}{the data frame you are processing}
 
-\item{column}{the column name where the variable you want to rename is found}
-
 \item{old_name}{the name of the variable you wish to change}
 
 \item{new_name}{the name you want the variable to change to}
+
+\item{column}{the column name where the variable you want to rename is found}
 }
 \value{
 Renamed variable

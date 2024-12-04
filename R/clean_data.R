@@ -7,11 +7,10 @@
 clean_data <- function(df) {
   df <- df %>%
     na.omit() %>%
-    str_replace_all(df, " ", ".") %>%
-    str_replace_all(df, "/", ".")
+    mutate(across(everything(), ~ str_replace_all(as.character(.), " ", "."))) %>%
+    mutate(across(everything(), ~ str_replace_all(as.character(.), "/", ".")))
   return(df)
 }
-
 
 
 

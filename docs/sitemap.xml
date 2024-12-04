@@ -2,16 +2,25 @@
 <url><loc>/404.html</loc></url>
 <url><loc>/articles/LanguirandR.html</loc></url>
 <url><loc>/articles/Projectthree_amw.html</loc></url>
+<url><loc>/articles/clean_data.html</loc></url>
+<url><loc>/articles/combine_logs.html</loc></url>
+<url><loc>/articles/crazy_histogram.html</loc></url>
+<url><loc>/articles/density_plot.html</loc></url>
 <url><loc>/articles/index.html</loc></url>
+<url><loc>/articles/rename_variable.html</loc></url>
 <url><loc>/authors.html</loc></url>
 <url><loc>/index.html</loc></url>
 <url><loc>/reference/bar_plot.html</loc></url>
 <url><loc>/reference/clean_data.html</loc></url>
 <url><loc>/reference/combine_logs.html</loc></url>
+<url><loc>/reference/crazy_histogram.html</loc></url>
+<url><loc>/reference/density_plot.html</loc></url>
+<url><loc>/reference/density_plot_compare.html</loc></url>
 <url><loc>/reference/index.html</loc></url>
 <url><loc>/reference/pipe.html</loc></url>
 <url><loc>/reference/random_color_bar_plot.html</loc></url>
 <url><loc>/reference/rename_variable.html</loc></url>
 <url><loc>/reference/run_anova.html</loc></url>
+<url><loc>/reference/violin_plot.html</loc></url>
 </urlset>
 

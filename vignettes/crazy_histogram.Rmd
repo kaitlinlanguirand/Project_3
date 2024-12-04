@@ -1,0 +1,45 @@
+---
+title: "crazy_histogram"
+output: rmarkdown::html_vignette
+vignettes: >
+  %\VignetteIndexEntry{Project 3}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+## Introduction
+
+a few words about it
+
+## Installation Instructions
+```{r setup}
+devtools::install_github("kaitlinlanguirand/Project_3")
+library(LanguirandR)
+
+```
+
+## Example
+
+### Download Data
+```{r}
+download.file("https://github.com/kaitlinlanguirand/Project_3/raw/refs/heads/main/datasets_project3/log_1.log", "datasets_project3/log_1.log")
+
+log_1 <- read_table("/cloud/project/datasets_project3/log_1.log")
+
+download.file("https://github.com/kaitlinlanguirand/Project_3/raw/refs/heads/main/datasets_project3/log_2.log", "datasets_project3/log_2.log")
+
+log_2 <- read_table("/cloud/project/datasets_project3/log_2.log")
+
+```
+
+### Use Function
+```{r eval=FALSE, fig.width=8, warning=FALSE, include=FALSE}
+LanguirandR::crazy_histogram())
+```

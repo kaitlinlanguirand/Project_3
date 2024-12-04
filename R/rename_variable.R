@@ -7,8 +7,13 @@
 #'
 #' @return Renamed variable
 #' @export
-rename_variable <- function(df, column, old_name, new_name) {
+rename_variable <- function(df, old_name, new_name) {
+  df <- as.data.frame(df)
+  if (!old_name %in% colnames(df)) {
+    stop(paste("Error: Column", old_name, "does not exist in the table."))
+  }
   df <- df %>%
-    dplyr::mutate(across('column', str_replace, 'old_name', 'new_name'))
+    dplyr::rename(!!new_name := !!sym(old_name))
+
   return(df)
 }
