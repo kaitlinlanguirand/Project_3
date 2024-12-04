@@ -41,5 +41,5 @@ log_2 <- read_table("/cloud/project/datasets_project3/log_2.log")
 
 ### Use Function
 ```{r eval=FALSE, fig.width=8, warning=FALSE, include=FALSE}
-LanguirandR::crazy_histogram(log_1, "Posterior", "plot title", "Posterior", "Density")
+LanguirandR::crazy_histogram(log_1, "Posterior", "Posterior Frequency", "Posterior", "Frequency")
 ```

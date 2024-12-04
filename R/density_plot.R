@@ -7,7 +7,7 @@
 #' @param x_title title of x axis
 #' @param y_title title of y axis
 #'
-#' @return A denisty plot displaying the frequency of column selected
+#' @return A density plot displaying the frequency of column selected
 #' @export
 density_plot <- function(df, x_column1, x_column2, plot_title, x_title, y_title) {
   df_long <- df %>%

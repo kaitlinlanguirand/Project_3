@@ -16,7 +16,7 @@ knitr::opts_chunk$set(
 
 ## Introduction
 
-a few words about it
+This function allows the user to create a density plot by selecting a cloumn from the dataframe choosen. 
 
 ## Installation Instructions
 ```{r setup}
@@ -28,6 +28,7 @@ library(LanguirandR)
 ## Example
 
 ### Download Data
+
 ```{r}
 download.file("https://github.com/kaitlinlanguirand/Project_3/raw/refs/heads/main/datasets_project3/log_1.log", "datasets_project3/log_1.log")
 
@@ -39,10 +40,13 @@ log_2 <- read_table("/cloud/project/datasets_project3/log_2.log")
 
 ```
 
+
+
 ### Use Function
+
 ```{r eval=FALSE, fig.width=8, warning=FALSE, include=FALSE}
 library(ggplot2)
 
-LanguirandR::density_plot(log_1, "Posterior", "Likelihood", "plot title", "Posterior", "Density")
+LanguirandR::density_plot(log_1, "Posterior", "Likelihood", "plot title", "Posterior", "Density") + print()
 ```
 

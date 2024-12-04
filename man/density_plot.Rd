@@ -20,7 +20,7 @@ density_plot(df, x_column1, x_column2, plot_title, x_title, y_title)
 \item{title}{title of plot}
 }
 \value{
-A denisty plot displaying the frequency of column selected
+A density plot displaying the frequency of column selected
 }
 \description{
 density plot
