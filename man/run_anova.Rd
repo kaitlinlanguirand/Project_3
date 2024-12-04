@@ -2,20 +2,20 @@
 % Please edit documentation in R/run_anova.R
 \name{run_anova}
 \alias{run_anova}
-\title{run anova}
+\title{Run one-sample ANOVA and t-test}
 \usage{
-run_anova(df, numeric_var, group_var)
+run_anova(df, numeric_column, mu = 0)
 }
 \arguments{
-\item{df}{the data frame you want to clean}
+\item{df}{The data frame containing the numeric column you want to analyze.}
 
-\item{num_var}{the name of the numeric variable}
+\item{numeric_column}{The name of the numeric column to test (e.g., "Posterior").}
 
-\item{grp_var}{the name of the grouping variable}
+\item{mu}{The hypothesized value to compare the numeric column's mean to. Default is 0.}
 }
 \value{
 An ANOVA summary table
 }
 \description{
-run anova
+Run one-sample ANOVA and t-test
 }

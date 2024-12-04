@@ -16,9 +16,25 @@ knitr::opts_chunk$set(
 
 ## Introduction
 
-a few words about it
+The crazy_histogram function creates a visually unique, jittered histogram where the data points are displayed in various shapes and colors. The function allows you to select a column from your dataset and display it with customized axis titles and a plot title.
+
+This function is ideal when you want to create an aesthetically unconventional histogram with individual data points visible in a scattered fashion.
+
+### Data Requirements
+
+The function requires a data frame (df) with a numeric column that will be plotted. The following parameters are needed:
+
++ df: The input data frame containing the data to be visualized.
++ column: The name of the column you want to plot (it should be a numeric column).
++ title: The title of the plot.
++ x_title: The label for the x-axis.
++ y_title: The label for the y-axis.
+
 
 ## Installation Instructions
+
+To install and load the LanguirandR package, use the following commands:
+
 ```{r setup}
 devtools::install_github("kaitlinlanguirand/Project_3")
 library(LanguirandR)
@@ -27,19 +43,24 @@ library(LanguirandR)
 
 ## Example
 
+You can download sample data and load it into R as shown below:
+
 ### Download Data
 ```{r}
 download.file("https://github.com/kaitlinlanguirand/Project_3/raw/refs/heads/main/datasets_project3/log_1.log", "datasets_project3/log_1.log")
 
 log_1 <- read_table("/cloud/project/datasets_project3/log_1.log")
 
-download.file("https://github.com/kaitlinlanguirand/Project_3/raw/refs/heads/main/datasets_project3/log_2.log", "datasets_project3/log_2.log")
-
-log_2 <- read_table("/cloud/project/datasets_project3/log_2.log")
-
 ```
 
 ### Use Function
+
+Once your data is loaded, you can create a customized jittered histogram using the crazy_histogram function. This function takes in a column from your dataset and generates a plot with unique visual elements.
+
 ```{r eval=FALSE, fig.width=8, warning=FALSE, include=FALSE}
 LanguirandR::crazy_histogram(log_1, "Posterior", "Posterior Frequency", "Posterior", "Frequency")
 ```
+
+### Conclusion
+
+The crazy_histogram function is a creative way to visualize data with jittered points, where each data point is presented with different sizes, colors, and shapes. It allows for a dark-themed, artistic display of your data while retaining useful visual insights.

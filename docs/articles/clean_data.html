@@ -66,6 +66,9 @@
     <li>
       <a href="../articles/rename_variable.html">rename_variable</a>
     </li>
+    <li>
+      <a href="../articles/run_anova.html">density_plot</a>
+    </li>
   </ul>
 </li>
       </ul>
@@ -95,18 +98,36 @@
 <div class="section level2">
 <h2 id="introduction">Introduction<a class="anchor" aria-label="anchor" href="#introduction"></a>
 </h2>
-<p>a few words about it</p>
+<p>The clean_data function is designed to clean your data by performing
+two key operations:</p>
+<ul>
+<li>Removing missing values: The function automatically omits rows
+containing NA values.</li>
+<li>Standardizing text: It replaces spaces and slashes in the dataset
+with periods (“.”).</li>
+</ul>
+<p>This function is useful when preparing raw data for analysis,
+ensuring that your dataset is free of missing values and uses consistent
+formatting.</p>
+<div class="section level3">
+<h3 id="data-requirements">Data Requirements<a class="anchor" aria-label="anchor" href="#data-requirements"></a>
+</h3>
+<p>The input for this function should be a data frame (df). The data
+frame should contain any type of data that may require cleaning</p>
+</div>
 </div>
 <div class="section level2">
 <h2 id="installation-instructions">Installation Instructions<a class="anchor" aria-label="anchor" href="#installation-instructions"></a>
 </h2>
+<p>To install and load the LanguirandR package, use the following
+commands:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"kaitlinlanguirand/Project_3"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Using GitHub PAT from the git credential store.</span></span>
 <span><span class="co">#&gt; Downloading GitHub repo kaitlinlanguirand/Project_3@HEAD</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; <span style="color: #00BBBB;">──</span> <span style="color: #00BBBB;">R CMD build</span> <span style="color: #00BBBB;">─────────────────────────────────────────────────────────────────</span></span></span>
-<span><span class="co">#&gt; * checking for file ‘/tmp/Rtmpil5hmn/remotes483b599e0acb/kaitlinlanguirand-Project_3-9b62930/DESCRIPTION’ ... OK</span></span>
+<span><span class="co">#&gt; * checking for file ‘/tmp/RtmpXok0C2/remotes36a61cff781b/kaitlinlanguirand-Project_3-135d3eb/DESCRIPTION’ ... OK</span></span>
 <span><span class="co">#&gt; * preparing ‘LanguirandR’:</span></span>
 <span><span class="co">#&gt; * checking DESCRIPTION meta-information ... OK</span></span>
 <span><span class="co">#&gt; * checking for LF line-endings in source and make files and shell scripts</span></span>
@@ -114,7 +135,7 @@
 <span><span class="co">#&gt; * looking to see if a ‘data/datalist’ file should be added</span></span>
 <span><span class="co">#&gt; * building ‘LanguirandR_0.0.0.9000.tar.gz’</span></span>
 <span><span class="co">#&gt; Warning: invalid uid value replaced by that for user 'nobody'</span></span>
-<span><span class="co">#&gt; Installing package into '/tmp/RtmpSB970O/temp_libpath464a29538a77'</span></span>
+<span><span class="co">#&gt; Installing package into '/tmp/RtmpI4fgqD/temp_libpath34aa7d2e73ed'</span></span>
 <span><span class="co">#&gt; (as 'lib' is unspecified)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va">LanguirandR</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Loading required package: tidyverse</span></span>
@@ -135,13 +156,16 @@
 <div class="section level3">
 <h3 id="download-data">Download Data<a class="anchor" aria-label="anchor" href="#download-data"></a>
 </h3>
+<p>Before using the clean_data function, you need to download and load
+your data. Here’s how to get the log_1.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/download.file.html" class="external-link">download.file</a></span><span class="op">(</span><span class="st">"https://github.com/kaitlinlanguirand/Project_3/raw/refs/heads/main/datasets_project3/log_1.log"</span>, <span class="st">"datasets_project3/log_1.log"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Warning in</span></span>
 <span><span class="co">#&gt; download.file("https://github.com/kaitlinlanguirand/Project_3/raw/refs/heads/main/datasets_project3/log_1.log",</span></span>
 <span><span class="co">#&gt; : URL</span></span>
 <span><span class="co">#&gt; https://github.com/kaitlinlanguirand/Project_3/raw/refs/heads/main/datasets_project3/log_1.log:</span></span>
-<span><span class="co">#&gt; cannot open destfile 'datasets_project3/log_1.log', reason 'Not a directory'</span></span>
+<span><span class="co">#&gt; cannot open destfile 'datasets_project3/log_1.log', reason 'No such file or</span></span>
+<span><span class="co">#&gt; directory'</span></span>
 <span><span class="co">#&gt; Warning in</span></span>
 <span><span class="co">#&gt; download.file("https://github.com/kaitlinlanguirand/Project_3/raw/refs/heads/main/datasets_project3/log_1.log",</span></span>
 <span><span class="co">#&gt; : download had nonzero exit status</span></span>
@@ -152,30 +176,22 @@
 <span><span class="co">#&gt; cols(</span></span>
 <span><span class="co">#&gt;   .default = col_double()</span></span>
 <span><span class="co">#&gt; )</span></span>
-<span><span class="co">#&gt; <span style="color: #00BBBB;">ℹ</span> Use `spec()` for the full column specifications.</span></span>
-<span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/utils/download.file.html" class="external-link">download.file</a></span><span class="op">(</span><span class="st">"https://github.com/kaitlinlanguirand/Project_3/raw/refs/heads/main/datasets_project3/log_2.log"</span>, <span class="st">"datasets_project3/log_2.log"</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Warning in</span></span>
-<span><span class="co">#&gt; download.file("https://github.com/kaitlinlanguirand/Project_3/raw/refs/heads/main/datasets_project3/log_2.log",</span></span>
-<span><span class="co">#&gt; : URL</span></span>
-<span><span class="co">#&gt; https://github.com/kaitlinlanguirand/Project_3/raw/refs/heads/main/datasets_project3/log_2.log:</span></span>
-<span><span class="co">#&gt; cannot open destfile 'datasets_project3/log_2.log', reason 'Not a directory'</span></span>
-<span><span class="co">#&gt; Warning in</span></span>
-<span><span class="co">#&gt; download.file("https://github.com/kaitlinlanguirand/Project_3/raw/refs/heads/main/datasets_project3/log_2.log",</span></span>
-<span><span class="co">#&gt; : download had nonzero exit status</span></span>
-<span></span>
-<span><span class="va">log_2</span> <span class="op">&lt;-</span> <span class="fu">read_table</span><span class="op">(</span><span class="st">"/cloud/project/datasets_project3/log_2.log"</span><span class="op">)</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; <span style="color: #00BBBB;">──</span> <span style="font-weight: bold;">Column specification</span> <span style="color: #00BBBB;">────────────────────────────────────────────────────────</span></span></span>
-<span><span class="co">#&gt; cols(</span></span>
-<span><span class="co">#&gt;   .default = col_double()</span></span>
-<span><span class="co">#&gt; )</span></span>
 <span><span class="co">#&gt; <span style="color: #00BBBB;">ℹ</span> Use `spec()` for the full column specifications.</span></span></code></pre></div>
 </div>
 <div class="section level3">
 <h3 id="use-function">Use Function<a class="anchor" aria-label="anchor" href="#use-function"></a>
 </h3>
+<p>Once your data is loaded, you can use the clean_data function to
+clean it by removing NA values and standardizing text:</p>
 <pre><code><span><span class="fu">LanguirandR</span><span class="fu">::</span><span class="fu"><a href="../reference/clean_data.html">clean_data</a></span><span class="op">(</span><span class="va">log_1</span><span class="op">)</span></span></code></pre>
+</div>
+<div class="section level3">
+<h3 id="conclusion">Conclusion<a class="anchor" aria-label="anchor" href="#conclusion"></a>
+</h3>
+<p>The clean_data function is an efficient tool for cleaning your data
+frames by removing NA values and standardizing text formatting. This
+ensures that your data is ready for analysis without the hassle of
+manual cleaning.</p>
 </div>
 </div>
   </div>

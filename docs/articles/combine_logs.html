@@ -66,6 +66,9 @@
     <li>
       <a href="../articles/rename_variable.html">rename_variable</a>
     </li>
+    <li>
+      <a href="../articles/run_anova.html">density_plot</a>
+    </li>
   </ul>
 </li>
       </ul>
@@ -95,15 +98,41 @@
 <div class="section level2">
 <h2 id="introduction">Introduction<a class="anchor" aria-label="anchor" href="#introduction"></a>
 </h2>
-<p>a few words about it</p>
+<p>The combine_logs function simplifies the process of combining two log
+files into a single data frame for further analysis or visualization.
+Users can specify the data frames to combine and assign meaningful
+labels to distinguish data from each file.</p>
+<p>This guide provides an overview of the function’s requirements and
+usage, ensuring you can easily integrate it into your workflow.</p>
+<div class="section level3">
+<h3 id="data-requirements">Data Requirements<a class="anchor" aria-label="anchor" href="#data-requirements"></a>
+</h3>
+<p>To use the combine_logs function, your data must meet the following
+criteria:</p>
+<ol style="list-style-type: decimal">
+<li><p>Two Data Frames The function requires two data frames (df1 and
+df2) as inputs. These data frames should have the same structure (i.e.,
+identical column names) to enable a seamless combination.</p></li>
+<li><p>Consistent Column Names Both data frames must have matching
+column names. This ensures that the combined data frame preserves the
+structure of the original files.</p></li>
+<li><p>Labels for Data Sources You need to provide labels as strings for
+each input data frame. These labels will be added as a new column in the
+combined data frame to identify the source of each row.</p></li>
+</ol>
+<p>Its going to be in this order when you are done: combine_logs &lt;-
+function(df1, df2, name1, name2)</p>
+</div>
 </div>
 <div class="section level2">
 <h2 id="installation-instructions">Installation Instructions<a class="anchor" aria-label="anchor" href="#installation-instructions"></a>
 </h2>
+<p>To install and load the LanguirandR package, use the following
+commands:</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"kaitlinlanguirand/Project_3"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Using GitHub PAT from the git credential store.</span></span>
-<span><span class="co">#&gt; Skipping install of 'LanguirandR' from a github remote, the SHA1 (9b629305) has not changed since last install.</span></span>
+<span><span class="co">#&gt; Skipping install of 'LanguirandR' from a github remote, the SHA1 (135d3eb3) has not changed since last install.</span></span>
 <span><span class="co">#&gt;   Use `force = TRUE` to force installation</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va">LanguirandR</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Loading required package: tidyverse</span></span>
@@ -124,13 +153,15 @@
 <div class="section level3">
 <h3 id="download-data">Download Data<a class="anchor" aria-label="anchor" href="#download-data"></a>
 </h3>
+<p>Before using the function, download and prepare your log files:</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/download.file.html" class="external-link">download.file</a></span><span class="op">(</span><span class="st">"https://github.com/kaitlinlanguirand/Project_3/raw/refs/heads/main/datasets_project3/log_1.log"</span>, <span class="st">"datasets_project3/log_1.log"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Warning in</span></span>
 <span><span class="co">#&gt; download.file("https://github.com/kaitlinlanguirand/Project_3/raw/refs/heads/main/datasets_project3/log_1.log",</span></span>
 <span><span class="co">#&gt; : URL</span></span>
 <span><span class="co">#&gt; https://github.com/kaitlinlanguirand/Project_3/raw/refs/heads/main/datasets_project3/log_1.log:</span></span>
-<span><span class="co">#&gt; cannot open destfile 'datasets_project3/log_1.log', reason 'Not a directory'</span></span>
+<span><span class="co">#&gt; cannot open destfile 'datasets_project3/log_1.log', reason 'No such file or</span></span>
+<span><span class="co">#&gt; directory'</span></span>
 <span><span class="co">#&gt; Warning in</span></span>
 <span><span class="co">#&gt; download.file("https://github.com/kaitlinlanguirand/Project_3/raw/refs/heads/main/datasets_project3/log_1.log",</span></span>
 <span><span class="co">#&gt; : download had nonzero exit status</span></span>
@@ -148,7 +179,8 @@
 <span><span class="co">#&gt; download.file("https://github.com/kaitlinlanguirand/Project_3/raw/refs/heads/main/datasets_project3/log_2.log",</span></span>
 <span><span class="co">#&gt; : URL</span></span>
 <span><span class="co">#&gt; https://github.com/kaitlinlanguirand/Project_3/raw/refs/heads/main/datasets_project3/log_2.log:</span></span>
-<span><span class="co">#&gt; cannot open destfile 'datasets_project3/log_2.log', reason 'Not a directory'</span></span>
+<span><span class="co">#&gt; cannot open destfile 'datasets_project3/log_2.log', reason 'No such file or</span></span>
+<span><span class="co">#&gt; directory'</span></span>
 <span><span class="co">#&gt; Warning in</span></span>
 <span><span class="co">#&gt; download.file("https://github.com/kaitlinlanguirand/Project_3/raw/refs/heads/main/datasets_project3/log_2.log",</span></span>
 <span><span class="co">#&gt; : download had nonzero exit status</span></span>
@@ -164,7 +196,17 @@
 <div class="section level3">
 <h3 id="use-function">Use Function<a class="anchor" aria-label="anchor" href="#use-function"></a>
 </h3>
+<p>Once your data frames are ready, you can combine them using the
+combine_logs function:</p>
 <pre><code><span><span class="fu">LanguirandR</span><span class="fu">::</span><span class="fu"><a href="../reference/combine_logs.html">combine_logs</a></span><span class="op">(</span><span class="va">log_1</span>,<span class="va">log_2</span>,<span class="st">"log1"</span>,<span class="st">"log_2"</span><span class="op">)</span></span></code></pre>
+</div>
+<div class="section level3">
+<h3 id="conclusion">Conclusion<a class="anchor" aria-label="anchor" href="#conclusion"></a>
+</h3>
+<p>The combine_logs function streamlines the process of merging log
+files, allowing you to focus on downstream analyses. By ensuring your
+input data meets the outlined requirements, you can create clean,
+labeled datasets with minimal effort.</p>
 </div>
 </div>
   </div>

@@ -89,7 +89,7 @@
             
       
 
-      <div class="hidden name"><code>density_plot.Rmd</code></div>
+      <div class="hidden name"><code>run_anova.Rmd</code></div>
 
     </div>
 
@@ -98,36 +98,17 @@
 <div class="section level2">
 <h2 id="introduction">Introduction<a class="anchor" aria-label="anchor" href="#introduction"></a>
 </h2>
-<p>The density_plot function enables users to create a density plot by
-selecting a column from a chosen data frame. This tool is ideal for
-visualizing data distributions and includes jittered points for added
-clarity. It is designed for ease of use, requiring minimal customization
-beyond selecting your data and titles for the axis.</p>
-<div class="section level3">
-<h3 id="data-requirements">Data Requirements<a class="anchor" aria-label="anchor" href="#data-requirements"></a>
-</h3>
-<p>To use the density_plot function, ensure your input data meets these
-requirements:</p>
-<ol style="list-style-type: decimal">
-<li><p>Data Frame The function requires a data frame (df) as input. Your
-data should be structured in rows and columns, with each column
-representing a variable.</p></li>
-<li><p>Two Numeric Columns You need to specify two numeric columns from
-the data frame. These columns will be plotted on the x- and y-axes
-respectively:</p></li>
-<li><p>Labels When calling the function, provide the column names,plot
-title, x-axis label, and the y-axis label as strings (enclosed in
-quotation marks) to match the exact names in the data frame.</p></li>
-</ol>
-<p>Its going to be in this order when you are done: density_plot &lt;-
-function(df, x_column1, x_column2, plot_title, x_title, y_title)</p>
-</div>
+<p>The run_anova function is designed to perform a one-sample ANOVA test
+on a numeric variable to compare its mean against a specified value
+(default is 0). This function provides the ANOVA summary table, the
+F-statistic, and p-value, and additionally runs a t-test to compare the
+mean of the numeric variable against a hypothesized value.</p>
 </div>
 <div class="section level2">
 <h2 id="installation-instructions">Installation Instructions<a class="anchor" aria-label="anchor" href="#installation-instructions"></a>
 </h2>
-<p>To install and load the package containing the function, follow these
-steps:</p>
+<p>To use this function, you will first need to install the package and
+load it into your R environment.</p>
 <div class="sourceCode" id="cb1"><pre class="downlit sourceCode r">
 <code class="sourceCode R"><span><span class="fu">devtools</span><span class="fu">::</span><span class="fu"><a href="https://remotes.r-lib.org/reference/install_github.html" class="external-link">install_github</a></span><span class="op">(</span><span class="st">"kaitlinlanguirand/Project_3"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Using GitHub PAT from the git credential store.</span></span>
@@ -172,51 +153,22 @@ repository and load them into R:</p>
 <span><span class="co">#&gt; cols(</span></span>
 <span><span class="co">#&gt;   .default = col_double()</span></span>
 <span><span class="co">#&gt; )</span></span>
-<span><span class="co">#&gt; <span style="color: #00BBBB;">ℹ</span> Use `spec()` for the full column specifications.</span></span>
-<span></span>
-<span><span class="fu"><a href="https://rdrr.io/r/utils/download.file.html" class="external-link">download.file</a></span><span class="op">(</span><span class="st">"https://github.com/kaitlinlanguirand/Project_3/raw/refs/heads/main/datasets_project3/log_2.log"</span>, <span class="st">"datasets_project3/log_2.log"</span><span class="op">)</span></span>
-<span><span class="co">#&gt; Warning in</span></span>
-<span><span class="co">#&gt; download.file("https://github.com/kaitlinlanguirand/Project_3/raw/refs/heads/main/datasets_project3/log_2.log",</span></span>
-<span><span class="co">#&gt; : URL</span></span>
-<span><span class="co">#&gt; https://github.com/kaitlinlanguirand/Project_3/raw/refs/heads/main/datasets_project3/log_2.log:</span></span>
-<span><span class="co">#&gt; cannot open destfile 'datasets_project3/log_2.log', reason 'No such file or</span></span>
-<span><span class="co">#&gt; directory'</span></span>
-<span><span class="co">#&gt; Warning in</span></span>
-<span><span class="co">#&gt; download.file("https://github.com/kaitlinlanguirand/Project_3/raw/refs/heads/main/datasets_project3/log_2.log",</span></span>
-<span><span class="co">#&gt; : download had nonzero exit status</span></span>
-<span></span>
-<span><span class="va">log_2</span> <span class="op">&lt;-</span> <span class="fu">read_table</span><span class="op">(</span><span class="st">"/cloud/project/datasets_project3/log_2.log"</span><span class="op">)</span></span>
-<span><span class="co">#&gt; </span></span>
-<span><span class="co">#&gt; <span style="color: #00BBBB;">──</span> <span style="font-weight: bold;">Column specification</span> <span style="color: #00BBBB;">────────────────────────────────────────────────────────</span></span></span>
-<span><span class="co">#&gt; cols(</span></span>
-<span><span class="co">#&gt;   .default = col_double()</span></span>
-<span><span class="co">#&gt; )</span></span>
 <span><span class="co">#&gt; <span style="color: #00BBBB;">ℹ</span> Use `spec()` for the full column specifications.</span></span></code></pre></div>
 </div>
 <div class="section level3">
 <h3 id="use-function">Use Function<a class="anchor" aria-label="anchor" href="#use-function"></a>
 </h3>
-<p>Here’s how to use the density_plot function with the example
-dataset:</p>
-</div>
-<div class="section level3">
-<h3 id="notes">Notes<a class="anchor" aria-label="anchor" href="#notes"></a>
-</h3>
-<ul>
-<li>Ensure your data frame contains the specified numeric columns.</li>
-<li>Customize the column inputs and titles to suit your specific dataset
-and visualization needs.</li>
-<li>The function is pre-styled and does not require manual theme
-adjustments</li>
-</ul>
+<p>You can use the run_anova function to test the mean of a numeric
+column. In the example below, we test the Posterior column of log_1
+against a hypothesized mean of 0.</p>
 </div>
 <div class="section level3">
 <h3 id="conclusion">Conclusion<a class="anchor" aria-label="anchor" href="#conclusion"></a>
 </h3>
-<p>The density_plot function simplifies the creation of visually
-appealing density plots. It is suitable for exploratory data analysis,
-presentations, and professional reporting. Use the examples provided to
-start visualizing your data distributions effectively.</p>
+<p>The run_anova function provides a simple and efficient way to test if
+a numeric variable’s mean significantly differs from a hypothesized
+value. It combines ANOVA and t-test results to give a comprehensive
+statistical summary.</p>
 </div>
 </div>
   </div>

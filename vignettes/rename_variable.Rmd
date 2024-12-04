@@ -16,32 +16,57 @@ knitr::opts_chunk$set(
 
 ## Introduction
 
-a few words about it
+The rename_variable function allows users to rename a column in a data frame. This is particularly useful when preparing data for analysis, as it enables you to adjust column names to be more descriptive or standardized.
 
-## Installation Instructions
+###Data Requirements
+
+1. Data Frame
+The input must be a data frame. This can be any data frame that contains the column you wish to rename.
+
+2. Old Column Name
+You must provide the current name of the column you want to rename. This should be passed as a string.
+
+3. New Column Name
+You must also provide the new name for the column, which should also be a string.
+
+### Installation Instructions
+To install and load the LanguirandR package, use the following commands:
 ```{r setup}
 devtools::install_github("kaitlinlanguirand/Project_3")
 library(LanguirandR)
 
 ```
 
+
 ## Example
 
 ### Download Data
+
+Before using the rename_variable function, you'll need to load your data frame. Here's how to download and load the log_1 data:
+
 ```{r}
 download.file("https://github.com/kaitlinlanguirand/Project_3/raw/refs/heads/main/datasets_project3/log_1.log", "datasets_project3/log_1.log")
 
 log_1 <- read_table("/cloud/project/datasets_project3/log_1.log")
 
-download.file("https://github.com/kaitlinlanguirand/Project_3/raw/refs/heads/main/datasets_project3/log_2.log", "datasets_project3/log_2.log")
-
-log_2 <- read_table("/cloud/project/datasets_project3/log_2.log")
-
 ```
-
+ 
+ 
+ 
 ### Use Function
-```
+
+Once your data is loaded, you can use the rename_variable function to rename any column in your data frame:
+
+```{r}
 LanguirandR::rename_variable(log_1, "alpha_morpho", "Alpha_Morpho")
+
 ```
 
 
+### Output
+
+After running the function, the specified column in the data frame will be renamed. For example, if the original column is called alpha_morpho, it will be renamed to Alpha_Morpho in the returned data frame.
+
+### Conclusion
+
+The rename_variable function is a quick and effective way to rename columns in your data frames. Whether you're cleaning data or making column names more descriptive for analysis, this function streamlines the renaming process.

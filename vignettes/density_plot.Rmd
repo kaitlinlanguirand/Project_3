@@ -16,18 +16,38 @@ knitr::opts_chunk$set(
 
 ## Introduction
 
-This function allows the user to create a density plot by selecting a cloumn from the dataframe choosen. 
+The density_plot function enables users to create a density plot by selecting a column from a chosen data frame. This tool is ideal for visualizing data distributions and includes jittered points for added clarity. It is designed for ease of use, requiring minimal customization beyond selecting your data and titles for the axis. 
+
+### Data Requirements
+To use the density_plot function, ensure your input data meets these requirements:
+
+1. Data Frame
+The function requires a data frame (df) as input. Your data should be structured in rows and columns, with each column representing a variable.
+
+2. Two Numeric Columns
+You need to specify two numeric columns from the data frame. These columns will be plotted on the x- and y-axes respectively:
+
+3. Labels
+When calling the function, provide the column names,plot title, x-axis label, and the y-axis label as strings (enclosed in quotation marks) to match the exact names in the data frame.
+
+Its going to be in this order when you are done:
+density_plot <- function(df, x_column1, x_column2, plot_title, x_title, y_title)
 
 ## Installation Instructions
+
+To install and load the package containing the function, follow these steps:
+
 ```{r setup}
 devtools::install_github("kaitlinlanguirand/Project_3")
 library(LanguirandR)
 
 ```
 
+
 ## Example
 
 ### Download Data
+To demonstrate the function, download example data files from the repository and load them into R:
 
 ```{r}
 download.file("https://github.com/kaitlinlanguirand/Project_3/raw/refs/heads/main/datasets_project3/log_1.log", "datasets_project3/log_1.log")
@@ -41,12 +61,21 @@ log_2 <- read_table("/cloud/project/datasets_project3/log_2.log")
 ```
 
 
-
 ### Use Function
 
-```{r eval=FALSE, fig.width=8, warning=FALSE, include=FALSE}
-library(ggplot2)
+Here’s how to use the density_plot function with the example dataset:
 
-LanguirandR::density_plot(log_1, "Posterior", "Likelihood", "plot title", "Posterior", "Density") + print()
+```{r eval=FALSE, fig.width=8, warning=FALSE, include=FALSE}
+LanguirandR::density_plot(log_1, "Posterior", "Likelihood", "plot title", "Posterior", "Density")
 ```
 
+
+### Notes
+
++ Ensure your data frame contains the specified numeric columns.
++ Customize the column inputs and titles to suit your specific dataset and visualization needs.
++ The function is pre-styled and does not require manual theme adjustments
+
+### Conclusion
+
+The density_plot function simplifies the creation of visually appealing density plots. It is suitable for exploratory data analysis, presentations, and professional reporting. Use the examples provided to start visualizing your data distributions effectively.

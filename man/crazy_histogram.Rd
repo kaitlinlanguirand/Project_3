@@ -2,14 +2,14 @@
 % Please edit documentation in R/crazy_histogram.R
 \name{crazy_histogram}
 \alias{crazy_histogram}
-\title{Bar plot with random colors}
+\title{Histogram plot with random colors}
 \usage{
 crazy_histogram(df, column, title, x_title, y_title)
 }
 \arguments{
-\item{df}{The data frame you want to pull data from.}
+\item{df}{The data frame you want to pull data from. This should be a data frame containing the column you want to plot.}
 
-\item{column}{The column you want to plot (should be a categorical variable).}
+\item{column}{The name of the column to plot (should be a numeric variable).}
 
 \item{title}{The title of the plot.}
 
@@ -18,8 +18,8 @@ crazy_histogram(df, column, title, x_title, y_title)
 \item{y_title}{The title of the y-axis.}
 }
 \value{
-A bar graph displaying the frequency of the selected column with random colors.
+A histogram displaying the frequency of the selected column with random colors.
 }
 \description{
-Bar plot with random colors
+Histogram plot with random colors
 }

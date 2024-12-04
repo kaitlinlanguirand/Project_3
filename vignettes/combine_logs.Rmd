@@ -16,18 +16,39 @@ knitr::opts_chunk$set(
 
 ## Introduction
 
-a few words about it
+The combine_logs function simplifies the process of combining two log files into a single data frame for further analysis or visualization. Users can specify the data frames to combine and assign meaningful labels to distinguish data from each file.
+
+This guide provides an overview of the function’s requirements and usage, ensuring you can easily integrate it into your workflow.
+
+### Data Requirements
+To use the combine_logs function, your data must meet the following criteria:
+
+1. Two Data Frames
+The function requires two data frames (df1 and df2) as inputs. These data frames should have the same structure (i.e., identical column names) to enable a seamless combination.
+
+2. Consistent Column Names
+Both data frames must have matching column names. This ensures that the combined data frame preserves the structure of the original files.
+
+3. Labels for Data Sources
+You need to provide labels as strings for each input data frame. These labels will be added as a new column in the combined data frame to identify the source of each row.
+
+Its going to be in this order when you are done:
+combine_logs <- function(df1, df2, name1, name2)
 
 ## Installation Instructions
+To install and load the LanguirandR package, use the following commands:
+
 ```{r setup}
 devtools::install_github("kaitlinlanguirand/Project_3")
 library(LanguirandR)
 
 ```
 
+
 ## Example
 
 ### Download Data
+Before using the function, download and prepare your log files:
 ```{r}
 download.file("https://github.com/kaitlinlanguirand/Project_3/raw/refs/heads/main/datasets_project3/log_1.log", "datasets_project3/log_1.log")
 
@@ -39,8 +60,16 @@ log_2 <- read_table("/cloud/project/datasets_project3/log_2.log")
 
 ```
 
+
 ### Use Function
+Once your data frames are ready, you can combine them using the combine_logs function:
 ```
 LanguirandR::combine_logs(log_1,log_2,"log1","log_2")
 ```
+
+
+### Conclusion
+
+The combine_logs function streamlines the process of merging log files, allowing you to focus on downstream analyses. By ensuring your input data meets the outlined requirements, you can create clean, labeled datasets with minimal effort.
+
 
