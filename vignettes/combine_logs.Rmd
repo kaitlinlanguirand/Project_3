@@ -50,23 +50,13 @@ library(LanguirandR)
 ### Download Data
 Before using the function, download and prepare your log files:
 ```{r}
-if (!dir.exists("datasets_project3")) {
-  dir.create("datasets_project3")
-}
-download.file(
-  url = "https://github.com/kaitlinlanguirand/Project_3/raw/refs/heads/main/datasets_project3/log_1.log",
-  destfile = "datasets_project3/log_1.log",
-  mode = "wb" 
-)
+download.file("https://raw.githubusercontent.com/kaitlinlanguirand/Project_3/refs/heads/main/data/log_1.log", "/cloud/project/data/log_1.log")
 
-log_1 <- read_table("/cloud/project/datasets_project3/log_1.log")
+log_1 <- read_table("/cloud/project/data/log_1.log")
 
-download.file(
-  url = "https://github.com/kaitlinlanguirand/Project_3/raw/refs/heads/main/datasets_project3/log_2.log",
-  destfile = "datasets_project3/log_2.log",
-  mode = "wb" 
-)
-log_2 <- read_table("/cloud/project/datasets_project3/log_2.log")
+download.file("https://raw.githubusercontent.com/kaitlinlanguirand/Project_3/refs/heads/main/data/log_2.log", "/cloud/project/data/log_2.log")
+
+log_2 <- read_table("/cloud/project/data/log_2.log")
 
 ```
 

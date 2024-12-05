@@ -124,7 +124,7 @@ commands:</p>
 <span><span class="co">#&gt; Downloading GitHub repo kaitlinlanguirand/Project_3@HEAD</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; <span style="color: #00BBBB;">──</span> <span style="color: #00BBBB;">R CMD build</span> <span style="color: #00BBBB;">─────────────────────────────────────────────────────────────────</span></span></span>
-<span><span class="co">#&gt; * checking for file ‘/tmp/Rtmp42L3Et/remotes13da1e5042f8/kaitlinlanguirand-Project_3-3d01e46/DESCRIPTION’ ... OK</span></span>
+<span><span class="co">#&gt; * checking for file ‘/tmp/RtmpxfWnIY/remotes54f299bad8f/kaitlinlanguirand-Project_3-313cd67/DESCRIPTION’ ... OK</span></span>
 <span><span class="co">#&gt; * preparing ‘LanguirandR’:</span></span>
 <span><span class="co">#&gt; * checking DESCRIPTION meta-information ... OK</span></span>
 <span><span class="co">#&gt; * checking for LF line-endings in source and make files and shell scripts</span></span>
@@ -132,7 +132,7 @@ commands:</p>
 <span><span class="co">#&gt; * looking to see if a ‘data/datalist’ file should be added</span></span>
 <span><span class="co">#&gt; * building ‘LanguirandR_0.0.0.9000.tar.gz’</span></span>
 <span><span class="co">#&gt; Warning: invalid uid value replaced by that for user 'nobody'</span></span>
-<span><span class="co">#&gt; Installing package into '/tmp/RtmpRt1FtD/temp_libpath11e65b89f6ab'</span></span>
+<span><span class="co">#&gt; Installing package into '/tmp/RtmpPrgpmw/temp_libpath3606c2809a'</span></span>
 <span><span class="co">#&gt; (as 'lib' is unspecified)</span></span>
 <span><span class="kw"><a href="https://rdrr.io/r/base/library.html" class="external-link">library</a></span><span class="op">(</span><span class="va">LanguirandR</span><span class="op">)</span></span>
 <span><span class="co">#&gt; Loading required package: tidyverse</span></span>
@@ -156,13 +156,9 @@ commands:</p>
 <p>Before using the clean_data function, you need to download and load
 your data. Here’s how to get the log_1.</p>
 <div class="sourceCode" id="cb2"><pre class="downlit sourceCode r">
-<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/download.file.html" class="external-link">download.file</a></span><span class="op">(</span></span>
-<span>  url <span class="op">=</span> <span class="st">"https://github.com/kaitlinlanguirand/Project_3/raw/refs/heads/main/datasets_project3/log_1.log"</span>,</span>
-<span>  destfile <span class="op">=</span> <span class="st">"datasets_project3/log_1.log"</span>,</span>
-<span>  mode <span class="op">=</span> <span class="st">"wb"</span> </span>
-<span><span class="op">)</span></span>
+<code class="sourceCode R"><span><span class="fu"><a href="https://rdrr.io/r/utils/download.file.html" class="external-link">download.file</a></span><span class="op">(</span><span class="st">"https://raw.githubusercontent.com/kaitlinlanguirand/Project_3/refs/heads/main/data/log_1.log"</span>, <span class="st">"/cloud/project/data/log_1.log"</span><span class="op">)</span></span>
 <span></span>
-<span><span class="va">log_1</span> <span class="op">&lt;-</span> <span class="fu">read_table</span><span class="op">(</span><span class="st">"/cloud/project/datasets_project3/log_1.log"</span><span class="op">)</span></span>
+<span><span class="va">log_1</span> <span class="op">&lt;-</span> <span class="fu">read_table</span><span class="op">(</span><span class="st">"/cloud/project/data/log_1.log"</span><span class="op">)</span></span>
 <span><span class="co">#&gt; </span></span>
 <span><span class="co">#&gt; <span style="color: #00BBBB;">──</span> <span style="font-weight: bold;">Column specification</span> <span style="color: #00BBBB;">────────────────────────────────────────────────────────</span></span></span>
 <span><span class="co">#&gt; cols(</span></span>
