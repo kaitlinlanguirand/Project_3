@@ -65,7 +65,8 @@ log_2 <- read_table("/cloud/project/datasets_project3/log_2.log")
 
 Here’s how to use the density_plot function with the example dataset:
 
-```{r, fig.cap="A density plot comparing the distribution of 'Posterior' and 'Likelihood' values from the log_1 dataset."}
+```{r, fig.cig.cap="Density plot comparing Posterior and Likelihood", alt="A density plot comparing the distribution of 'Posterior' and 'Likelihood' values from the log_1 dataset."}
+library(ggplot2)
 LanguirandR::density_plot(log_1, "Posterior", "Likelihood", "plot title", "Posterior", "Density")
 ```
 
