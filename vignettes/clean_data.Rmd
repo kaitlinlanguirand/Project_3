@@ -43,9 +43,13 @@ library(LanguirandR)
 ### Download Data
 
 Before using the clean_data function, you need to download and load your data. Here’s how to get the log_1.
-
+   
 ```{r}
-download.file("https://github.com/kaitlinlanguirand/Project_3/raw/refs/heads/main/datasets_project3/log_1.log", "datasets_project3/log_1.log")
+download.file(
+  url = "https://github.com/kaitlinlanguirand/Project_3/raw/refs/heads/main/datasets_project3/log_1.log",
+  destfile = "datasets_project3/log_1.log",
+  mode = "wb" 
+)
 
 log_1 <- read_table("/cloud/project/datasets_project3/log_1.log")
 

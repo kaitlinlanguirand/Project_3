@@ -50,11 +50,21 @@ library(LanguirandR)
 To demonstrate the function, download example data files from the repository and load them into R:
 
 ```{r}
-download.file("https://github.com/kaitlinlanguirand/Project_3/raw/refs/heads/main/datasets_project3/log_1.log", "datasets_project3/log_1.log")
-
+if (!dir.exists("datasets_project3")) {
+  dir.create("datasets_project3")
+}
+download.file(
+  url = "https://github.com/kaitlinlanguirand/Project_3/raw/refs/heads/main/datasets_project3/log_1.log",
+  destfile = "datasets_project3/log_1.log",
+  mode = "wb" 
+)
 log_1 <- read_table("/cloud/project/datasets_project3/log_1.log")
 
-download.file("https://github.com/kaitlinlanguirand/Project_3/raw/refs/heads/main/datasets_project3/log_2.log", "datasets_project3/log_2.log")
+download.file(
+  url = "https://github.com/kaitlinlanguirand/Project_3/raw/refs/heads/main/datasets_project3/log_2.log",
+  destfile = "datasets_project3/log_2.log",
+  mode = "wb"
+)
 
 log_2 <- read_table("/cloud/project/datasets_project3/log_2.log")
 
@@ -67,7 +77,7 @@ Here’s how to use the density_plot function with the example dataset:
 
 ```{r, fig.cig.cap="Density plot comparing Posterior and Likelihood", alt="A density plot comparing the distribution of 'Posterior' and 'Likelihood' values from the log_1 dataset."}
 library(ggplot2)
-LanguirandR::density_plot(log_1, "Posterior", "Likelihood", "plot title", "Posterior", "Density")
+LanguirandR::density_plot(log_1, "Posterior", "Likelihood", "Posterior and Likelihood Density", "Variables", "Density")
 ```
 
 

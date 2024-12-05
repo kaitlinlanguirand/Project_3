@@ -47,8 +47,14 @@ You can download sample data and load it into R as shown below:
 
 ### Download Data
 ```{r}
-download.file("https://github.com/kaitlinlanguirand/Project_3/raw/refs/heads/main/datasets_project3/log_1.log", "datasets_project3/log_1.log")
-
+if (!dir.exists("datasets_project3")) {
+  dir.create("datasets_project3")
+}
+download.file(
+  url = "https://github.com/kaitlinlanguirand/Project_3/raw/refs/heads/main/datasets_project3/log_1.log",
+  destfile = "datasets_project3/log_1.log",
+  mode = "wb" 
+)
 log_1 <- read_table("/cloud/project/datasets_project3/log_1.log")
 
 ```
