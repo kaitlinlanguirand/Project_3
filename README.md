@@ -62,7 +62,7 @@ LanguirandR::rename_variable()
 ```
 
 run_anova()
-
+  
 The run_anova() function conducts an ANOVA (Analysis of Variance) test on the chosen dataframe, enabling you to assess whether there are significant differences between group means
 ```
 LanguirandR::run_anova()
