@@ -5,7 +5,7 @@
 
 ###  Package Overview
 
-The LanguirandR package is a comprehensive R tool designed for data cleaning, transformation, and statistical analysis. It offers a range of functions tailored for efficient data manipulation and visualization, ensuring that your data analysis workfm low is both streamlined and effective. The package is particularly useful for working with log files, handling missing data, and creating insightful visualizations.
+The LanguirandR package is a comprehensive R tool designed for data cleaning, transformation, and statistical analysis. It offers a range of functions tailored     for efficient data manipulation and visualization, ensuring that your data analysis is effective. The package is particularly useful for working with log files, handling missing data, and creating insightful visualizations.
 
 ## Installation Instructions
 
