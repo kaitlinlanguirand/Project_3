@@ -57,7 +57,7 @@ log_1 <- read_table("/cloud/project/datasets_project3/log_1.log")
 
 Once your data is loaded, you can create a customized jittered histogram using the crazy_histogram function. This function takes in a column from your dataset and generates a plot with unique visual elements.
 
-```{r eval=FALSE, fig.width=8, warning=FALSE, include=FALSE}
+```{r eval=FALSE, fig.width=8, ig.cap="Crazy histogram with random colors", alt="A histogram with random colors comparing the distribution of the selected column."}
 LanguirandR::crazy_histogram(log_1, "Posterior", "Posterior Frequency", "Posterior", "Frequency")
 ```
 
