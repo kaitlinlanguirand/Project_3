@@ -14,5 +14,5 @@ combine_logs <- function(df1, df2, name1, name2) {
     df2 %>% mutate(source = name2)
   )
 
-  return(combined_df)
+  return(head(combined_df))
 }

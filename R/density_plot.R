@@ -13,7 +13,7 @@ density_plot <- function(df, x_column1, x_column2, plot_title, x_title, y_title)
   df_long <- df %>%
     pivot_longer(cols = c(x_column1, x_column2), names_to = "variable", values_to = "value")
 
-  ggplot(df_long, aes(x = value, fill = variable)) +
+  plot <- ggplot(df_long, aes(x = value, fill = variable)) +
     geom_density(alpha = 0.5) +
     labs(
       title = plot_title,
@@ -28,4 +28,5 @@ density_plot <- function(df, x_column1, x_column2, plot_title, x_title, y_title)
       axis.title.x = element_text(size = 14),
       axis.title.y = element_text(size = 14)
     )
+  return(plot)
 }

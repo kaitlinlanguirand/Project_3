@@ -15,5 +15,5 @@ rename_variable <- function(df, old_name, new_name) {
   df <- df %>%
     dplyr::rename(!!new_name := !!sym(old_name))
 
-  return(df)
+  return(colnames(df))
 }
