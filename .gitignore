@@ -8,3 +8,6 @@ project*.tgz
 LanguirandR.Rcheck/
 LanguirandR*.tar.gz
 LanguirandR*.tgz
+inst/doc
+/doc/
+/Meta/

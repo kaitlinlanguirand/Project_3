@@ -1,8 +1,8 @@
 ---
-title: "density_plot"
+title: "run_anova"
 output: rmarkdown::html_vignette
 vignettes: >
-  %\VignetteIndexEntry{Project 3}
+  %\VignetteIndexEntry{run_anova}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
@@ -46,7 +46,7 @@ log_1 <- read_table("/cloud/project/datasets_project3/log_1.log")
 
 You can use the run_anova function to test the mean of a numeric column. In the example below, we test the Posterior column of log_1 against a hypothesized mean of 0.
 
-```{r eval=FALSE, fig.width=8, warning=FALSE, include=FALSE}
+```{r}
 LanguirandR::run_anova(log_1, "Posterior", mu = 0) 
 ```
 

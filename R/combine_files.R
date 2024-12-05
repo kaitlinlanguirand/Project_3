@@ -7,7 +7,8 @@
 #'
 #' @return A combined data frame with an additional "source" column indicating the origin of each row.
 #' @export
-#'
+#' @importFrom dplyr bind_rows mutate
+#' @importFrom utils head
 combine_logs <- function(df1, df2, name1, name2) {
   combined_df <- bind_rows(
     df1 %>% mutate(source = name1),

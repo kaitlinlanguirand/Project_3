@@ -9,6 +9,7 @@
 #'
 #' @return A histogram displaying the frequency of the selected column with random colors.
 #' @export
+#' @importFrom ggplot2 ggplot aes geom_jitter labs coord_cartesian theme_minimal theme element_rect element_text element_line
 crazy_histogram <- function(df, column, title, x_title, y_title) {
 colors <- c("black", "dimgray", "darkgray", "gray20", "gray40")
 plot <- ggplot2::ggplot(df, aes(x = df[[column]])) +

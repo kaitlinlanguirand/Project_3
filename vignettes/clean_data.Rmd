@@ -2,7 +2,7 @@
 title: "clean_data"
 output: rmarkdown::html_vignette
 vignettes: >
-  %\VignetteIndexEntry{Project 3}
+  %\VignetteIndexEntry{clean_data}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---

@@ -3,16 +3,24 @@ Title: Project 3
 Version: 0.0.0.9000
 Authors@R: 
     person(given = "Kaitlin", family = "Languirand", email = "kaitlin.languirand@selu.edu", role = c("aut", "cre"))
-Description: What the package does (one paragraph).
+Description: A custom R package for data analysis, including functions for data cleaning, transformation, visualization, and statistical testing.
 Imports: 
     dplyr,
     ggplot2,
     magrittr,
     readr,
-    stringr
+    stringr,
+    tidyr,
+    stats,
+    rlang
 License: MIT
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.3.2
 Depends: 
     tidyverse
+VignetteBuilder: knitr
+Suggests: 
+    devtools,
+    knitr,
+    rmarkdown

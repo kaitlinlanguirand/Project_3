@@ -7,13 +7,15 @@
 #'
 #' @return Renamed variable
 #' @export
+#' @importFrom dplyr rename
+#' @importFrom rlang sym
 rename_variable <- function(df, old_name, new_name) {
   df <- as.data.frame(df)
   if (!old_name %in% colnames(df)) {
     stop(paste("Error: Column", old_name, "does not exist in the table."))
   }
   df <- df %>%
-    dplyr::rename(!!new_name := !!sym(old_name))
+    dplyr::rename(!!new_name := !!rlang::sym(old_name))
 
   return(colnames(df))
 }

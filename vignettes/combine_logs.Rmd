@@ -2,7 +2,7 @@
 title: "combine_logs"
 output: rmarkdown::html_vignette
 vignettes: >
-  %\VignetteIndexEntry{Project 3}
+  %\VignetteIndexEntry{combine_logs}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---

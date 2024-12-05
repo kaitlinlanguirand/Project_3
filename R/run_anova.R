@@ -6,6 +6,7 @@
 #'
 #' @return An ANOVA summary table
 #' @export
+#' @importFrom stats aov t.test
 run_anova <- function(df, numeric_column, mu = 0) {
   anova_result <- aov(df[[numeric_column]] ~ 1, data = df)
   result_summary <- summary(anova_result)

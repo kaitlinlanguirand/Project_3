@@ -6,3 +6,5 @@
 ^LanguirandR\.Rcheck$
 ^LanguirandR.*\.tar\.gz$
 ^LanguirandR.*\.tgz$
+^doc$
+^Meta$

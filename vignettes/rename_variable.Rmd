@@ -2,7 +2,7 @@
 title: "rename_variable"
 output: rmarkdown::html_vignette
 vignettes: >
-  %\VignetteIndexEntry{Project 3}
+  %\VignetteIndexEntry{rename_variable}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---

@@ -2,7 +2,7 @@
 title: "density_plot"
 output: rmarkdown::html_vignette
 vignettes: >
-  %\VignetteIndexEntry{Project 3}
+  %\VignetteIndexEntry{density_plot}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
@@ -65,7 +65,7 @@ log_2 <- read_table("/cloud/project/datasets_project3/log_2.log")
 
 Here’s how to use the density_plot function with the example dataset:
 
-```{r eval=FALSE, fig.width=8, warning=FALSE, include=FALSE}
+```{r, fig.cap="A density plot comparing the distribution of 'Posterior' and 'Likelihood' values from the log_1 dataset."}
 LanguirandR::density_plot(log_1, "Posterior", "Likelihood", "plot title", "Posterior", "Density")
 ```
 

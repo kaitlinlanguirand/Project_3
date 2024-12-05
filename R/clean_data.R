@@ -4,6 +4,11 @@
 #'
 #' @return Cleaned data frame
 #' @export
+#' @importFrom dplyr mutate across
+#' @importFrom tidyr everything
+#' @importFrom stringr str_replace_all
+#' @importFrom stats na.omit
+#' @importFrom utils head
 clean_data <- function(df) {
   df <- df %>%
     na.omit() %>%
